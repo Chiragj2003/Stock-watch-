@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { Search, X } from 'lucide-react';
 
 interface SearchBarProps {
   onSearch: (query: string) => void;
@@ -18,7 +19,6 @@ export default function SearchBar({ onSearch, totalStocks }: SearchBarProps) {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     setQuery(value);
-    // Live search as user types
     onSearch(value.trim());
   };
 
@@ -29,39 +29,28 @@ export default function SearchBar({ onSearch, totalStocks }: SearchBarProps) {
 
   return (
     <div className="w-full max-w-2xl mx-auto">
-      <form onSubmit={handleSubmit}>
-        <div className="relative">
-          <input
-            type="text"
-            value={query}
-            onChange={handleChange}
-            placeholder="Search by symbol, company name, or sector..."
-            className="w-full px-6 py-4 pr-24 text-lg rounded-full border-2 border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:border-blue-500 dark:focus:border-blue-400 transition-colors shadow-sm"
-          />
-          {query && (
-            <button
-              type="button"
-              onClick={handleClear}
-              className="absolute right-14 top-1/2 -translate-y-1/2 p-2 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300"
-            >
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-              </svg>
-            </button>
-          )}
+      <form onSubmit={handleSubmit} className="relative">
+        <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-muted-foreground w-5 h-5" />
+        <input
+          type="text"
+          value={query}
+          onChange={handleChange}
+          placeholder="Search stocks by symbol, name, or sector..."
+          className="w-full pl-12 pr-12 py-3 text-base rounded-full border bg-card text-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all"
+        />
+        {query && (
           <button
-            type="submit"
-            className="absolute right-2 top-1/2 -translate-y-1/2 p-3 bg-blue-600 hover:bg-blue-700 text-white rounded-full transition-colors"
+            type="button"
+            onClick={handleClear}
+            className="absolute right-4 top-1/2 -translate-y-1/2 p-1 text-muted-foreground hover:text-foreground"
           >
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-            </svg>
+            <X className="w-5 h-5" />
           </button>
-        </div>
+        )}
       </form>
       {totalStocks !== undefined && (
-        <p className="text-center text-sm text-gray-500 dark:text-gray-400 mt-2">
-          Search across {totalStocks}+ stocks from US & Indian markets
+        <p className="text-center text-xs text-muted-foreground mt-2">
+          Tracking {totalStocks}+ assets across global markets
         </p>
       )}
     </div>
