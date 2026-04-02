@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Header from '../components/Header';
 import { recommendedStocks, simulatePriceUpdate, RecommendedStock } from '../data/stocks';
-import { ArrowLeft, Cpu, Zap, BarChart, Bot, Shield, TrendingUp, BrainCircuit, FlaskConical, MessageCircle, Star, Info } from 'lucide-react';
+import { ArrowLeft, Cpu, Zap, Bot, Shield, TrendingUp, BrainCircuit, Star, Info } from 'lucide-react';
 
 export default function RecommendationsPage() {
   const [stocks, setStocks] = useState<RecommendedStock[]>(recommendedStocks);
@@ -252,7 +252,7 @@ export default function RecommendationsPage() {
                   }`}>
                     {stock.change >= 0 ? <TrendingUp className="w-4 h-4" /> : <TrendingUp className="w-4 h-4 rotate-180" />}
                     {stock.changePercent.toFixed(2)}%
-                  
+                  </div>
                 </div>
 
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 mb-4 text-center">

@@ -6,8 +6,8 @@ import Header from './components/Header';
 import SearchBar from './components/SearchBar';
 import StockCard from './components/StockCard';
 import MarketOverview from './components/MarketOverview';
-import { stocksData, usStocksData, indianStocksData, marketIndices, indianIndices, simulatePriceUpdate, searchStocks, Stock } from './data/stocks';
-import { Globe, Star, TrendingUp, TrendingDown, Award, SearchX } from 'lucide-react';
+import { stocksData, marketIndices, indianIndices, simulatePriceUpdate, searchStocks, Stock } from './data/stocks';
+import { Globe, Star, TrendingUp, TrendingDown, Award, SearchX, Activity } from 'lucide-react';
 
 export default function Home() {
   const [stocks, setStocks] = useState<Stock[]>(stocksData);

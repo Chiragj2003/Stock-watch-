@@ -27,19 +27,6 @@ export interface RecommendedStock extends Stock {
   sentimentScore: number;
 }
 
-// Helper to determine cap category
-function getCapCategory(marketCapValue: number, market: 'US' | 'IN'): 'large' | 'mid' | 'small' {
-  if (market === 'US') {
-    if (marketCapValue >= 10) return 'large'; // $10B+
-    if (marketCapValue >= 2) return 'mid';    // $2B-$10B
-    return 'small';                            // <$2B
-  } else {
-    if (marketCapValue >= 50000) return 'large';  // ₹50,000 Cr+
-    if (marketCapValue >= 10000) return 'mid';    // ₹10,000-50,000 Cr
-    return 'small';                                // <₹10,000 Cr
-  }
-}
-
 // US Stock Market Data - Extended
 export const usStocksData: Stock[] = [
   // Technology - Large Cap
